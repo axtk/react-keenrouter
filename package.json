@@ -1,0 +1,28 @@
+{
+  "name": "react-router",
+  "version": "1.0.0",
+  "description": "A lightweight React router",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx esbuild index.js --bundle --outfile=index.build.js --global-name=ReactRouter"
+  },
+  "keywords": [
+    "react",
+    "router",
+    "history"
+  ],
+  "author": "axtk",
+  "license": "ISC",
+  "dependencies": {
+    "router": "github:axtk/router"
+  },
+  "peerDependencies": {
+    "react": ">16.8"
+  },
+  "devDependencies": {
+    "esbuild": "^0.8.42"
+  },
+  "browser": {
+    "react": "./react.external.js"
+  }
+}

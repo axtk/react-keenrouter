@@ -4,7 +4,8 @@
   "description": "A lightweight React router",
   "main": "index.js",
   "scripts": {
-    "build": "npx esbuild index.js --bundle --outfile=index.build.js --global-name=ReactRouter"
+    "build": "npx esbuild index.js --bundle --outfile=index.build.js --global-name=ReactRouter",
+    "build:min": "npm run build -- --minify"
   },
   "keywords": [
     "react",

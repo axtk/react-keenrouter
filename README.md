@@ -1,8 +1,10 @@
 # react-router
 
-*A lightweight React router*
+This package extends *[router](https://github.com/axtk/router)* with the React hooks:
+- `useRoute(onRouteChange?)`
+- `useRouteLinks(links)`
 
-## Usage
+## Example
 
 ```jsx
 import ReactDOM from 'react-dom';

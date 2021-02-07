@@ -21,6 +21,7 @@ const App = () => {
 
     // subscribing plain links to the route object is an alternative to
     // creating a history link component
+    // (this hook will affect only same-origin links)
     useRouteLinks('.app a');
 
     return (

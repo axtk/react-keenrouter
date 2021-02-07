@@ -64,12 +64,10 @@ const App = () => {
                         <h1>404 Not found</h1>
                     </div>
                 ))}
-                {withRoute('*', (
-                    <div className="footer">
-                        <hr/>
-                        {new Date().toDateString()}
-                    </div>
-                ))}
+                <div className="footer">
+                    <hr/>
+                    {new Date().toDateString()}
+                </div>
             </div>
         </div>
     );

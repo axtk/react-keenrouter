@@ -18,11 +18,13 @@ const Route = {
 const allKnownRoutes = Object.values(Route);
 
 const App = () => {
-    // the hook returns [path, setPath], unused and omitted in this example
+    // the following hook enables the component's updates in response to URL changes,
+    // sets an optional callback to these changes, and returns `[path, setPath]`
+    // (the callback and the returned value are unused and omitted in this example)
     useRoute();
 
-    // subscribing plain links to the route object is an alternative to
-    // creating a history link component
+    // the following hook enables navigation without page reloading via plain links,
+    // which is an alternative to creating a history link component
     // (this hook will affect only same-origin links)
     useRouteLinks('.app a');
 

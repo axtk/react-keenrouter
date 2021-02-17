@@ -7,7 +7,6 @@ This package extends *[router](https://github.com/axtk/router)* with the React h
 ## Example
 
 ```jsx
-import ReactDOM from 'react-dom';
 import {useRoute, useRouteLinks, withRoute} from 'react-router';
 
 const Route = {
@@ -17,7 +16,7 @@ const Route = {
 };
 const allKnownRoutes = Object.values(Route);
 
-const App = () => {
+export default const App = () => {
     // the following hook enables the component's updates in response to URL changes,
     // sets an optional callback to these changes, and returns `[path, setPath]`
     // (the callback and the returned value are unused and omitted in this example)
@@ -72,6 +71,11 @@ const App = () => {
         </div>
     );
 };
+```
+
+```js
+import ReactDOM from 'react-dom';
+import App from './App';
 
 ReactDOM.render(<App/>, document.querySelector('#root'));
 ```

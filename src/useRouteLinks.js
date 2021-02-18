@@ -1,5 +1,5 @@
-import {useEffect} from 'react';
-import {route} from 'router';
+import {useContext, useEffect} from 'react';
+import RouteContext from './RouteContext';
 
 /**
  * Subscribes links to route changes to enable history navigation
@@ -11,5 +11,6 @@ import {route} from 'router';
  * @param {string | string[] | HTMLElement | HTMLElement[] | HTMLCollection | NodeList} links
  */
 export default links => {
-    useEffect(() => route.subscribe(links), [links]);
+    let route = useContext(RouteContext);
+    useEffect(() => route.subscribe(links), [route, links]);
 };

@@ -1,11 +1,13 @@
-import {useEffect, useState, useCallback} from 'react';
-import {route} from 'router';
+import {useContext, useEffect, useState, useCallback} from 'react';
+import {withRoute} from 'router';
+import RouteContext from './RouteContext';
 
 /**
  * @param {function} [onRouteChange] - An optional route change handler.
- * @returns {[string, function]}
+ * @returns {[object, function]}
  */
 export default onRouteChange => {
+    let route = useContext(RouteContext);
     let [path, setPath] = useState(route.href);
 
     let changeCallback = useCallback(event => {
@@ -13,10 +15,7 @@ export default onRouteChange => {
         if (onRouteChange) onRouteChange(event);
     }, [onRouteChange]);
 
-    useEffect(() => route.onChange(changeCallback), [changeCallback]);
+    useEffect(() => route.onChange(changeCallback), [route, changeCallback]);
 
-    return [
-        path,
-        (path, replace = false) => replace ? route.replace(path) : route.assign(path),
-    ];
+    return [route, withRoute(route)];
 };

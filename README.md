@@ -7,7 +7,8 @@ This package extends *[router](https://github.com/axtk/router)* with the React h
 ## Example
 
 ```jsx
-import {useRoute, useRouteLinks, withRoute} from 'react-router';
+// App.jsx
+import {useRoute, useRouteLinks} from 'react-router';
 
 const Route = {
     HOME: '/',
@@ -18,9 +19,8 @@ const allKnownRoutes = Object.values(Route);
 
 export default const App = () => {
     // the following hook enables the component's updates in response to URL changes,
-    // sets an optional callback to these changes, and returns `[path, setPath]`
-    // (the callback and the returned value are unused and omitted in this example)
-    useRoute();
+    // and sets an optional callback to these changes, if passed as an argument
+    const [route, withRoute] = useRoute();
 
     // the following hook enables navigation without page reloading via plain links,
     // which is an alternative to creating a history link component
@@ -73,11 +73,13 @@ export default const App = () => {
 };
 ```
 
-```js
+```jsx
+// index.js
 import ReactDOM from 'react-dom';
+import {Router} from 'react-router';
 import App from './App';
 
-ReactDOM.render(<App/>, document.querySelector('#root'));
+ReactDOM.render(<Router><App/></Router>, document.querySelector('#root'));
 ```
 
 ## Installation

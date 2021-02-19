@@ -1,8 +1,11 @@
 # react-router
 
 This package extends *[router](https://github.com/axtk/router)* with the React hooks:
-- `useRoute(onRouteChange?)`
-- `useRouteLinks(links)`
+
+- `useRoute(onRouteChange?)`,
+- `useRouteLinks(links)`,
+
+and the `<Router>` component.
 
 ## Example
 
@@ -76,10 +79,28 @@ export default const App = () => {
 ```jsx
 // index.js
 import ReactDOM from 'react-dom';
-import {Router} from 'react-router';
 import App from './App';
 
-ReactDOM.render(<Router><App/></Router>, document.querySelector('#root'));
+ReactDOM.render(<App/>, document.querySelector('#root'));
+```
+
+The browser environment allows the underlying context of the `<Router>` component to come up with a reasonable default route from the global context under the hood, and therefore wrapping the `<App/>` with a `<Router>` in the client-side code is unnecessary (although not impossible).
+
+## SSR
+
+While rendering server-side, it is convenient to provide a predefined context for the router hooks and utilities, so that the components were rendered according to the current route:
+
+```jsx
+// ...imports
+import {Router} from 'react-router';
+
+// with Express
+app.get('/', (req, res) => {
+    const html = ReactDOMServer.renderToString(
+        <Router route={req.originalUrl}><App/></Router>
+    );
+    // ...
+});
 ```
 
 ## Installation

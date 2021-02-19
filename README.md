@@ -84,7 +84,7 @@ import App from './App';
 ReactDOM.render(<App/>, document.querySelector('#root'));
 ```
 
-The browser environment allows the underlying context of the `<Router>` component to come up with a reasonable default route from the global context under the hood, and therefore wrapping the `<App/>` with a `<Router>` in the client-side code is unnecessary (although not impossible).
+The browser environment allows the underlying context of the `<Router>` component to come up with a reasonable default route from the global context under the hood. Therefore wrapping the `<App/>` with a `<Router>` in the client-side code is unnecessary, unless the `<Router>` should have prop values different from the default (`route`, `includesSearchParams` (`false`), `includesHash` (`false`)).
 
 ## SSR
 

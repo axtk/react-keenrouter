@@ -97,7 +97,7 @@ While rendering server-side, it is convenient to provide a predefined context fo
 
 ```jsx
 // ...imports
-import {Router} from 'react-router';
+import {Router} from '@axtk/react-router';
 
 // with Express
 app.get('/', (req, res) => {

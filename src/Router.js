@@ -1,5 +1,5 @@
 import {createElement} from 'react';
-import {Route} from 'router';
+import {Route} from '@axtk/router';
 import RouteContext from './RouteContext';
 
 export default ({

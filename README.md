@@ -1,17 +1,14 @@
-# react-router
+[![npm](https://img.shields.io/npm/v/@axtk/react-router?labelColor=royalblue&color=royalblue&style=flat-square)](https://www.npmjs.com/package/@axtk/react-router)
+![browser](https://img.shields.io/badge/browser-✓-blue?labelColor=dodgerblue&color=dodgerblue&style=flat-square)
+[![SSR](https://img.shields.io/badge/SSR-✓-blue?labelColor=dodgerblue&color=dodgerblue&style=flat-square)](#ssr)
 
-This package extends *[router](https://github.com/axtk/router)* with the React hooks:
+*A lightweight React router*
 
-- `useRoute(onRouteChange?)`,
-- `useRouteLinks(links)`,
-
-and the `<Router>` component.
-
-## Example
+# Usage
 
 ```jsx
 // App.jsx
-import {useRoute, useRouteLinks} from 'react-router';
+import {useRoute, useRouteLinks} from '@axtk/react-router';
 
 const Route = {
     HOME: '/',
@@ -21,23 +18,27 @@ const Route = {
 const allKnownRoutes = Object.values(Route);
 
 export default const App = () => {
-    // the following hook enables the component's updates in response to URL changes,
-    // and sets an optional callback to these changes, if passed as an argument
+    // The `useRoute` hook enables the component's updates in response
+    // to URL changes, and sets an optional callback to these changes,
+    // if passed as an argument.
     const [route, withRoute] = useRoute();
 
-    // the following hook enables navigation without page reloading via plain links,
-    // which is an alternative to creating a history link component
-    // (this hook will affect only same-origin links)
+    // The `useRouteLinks` hook enables navigation without page
+    // reloading via plain links, which is an alternative to creating
+    // a history link component.
+    // (This hook will affect only same-origin links.)
     useRouteLinks('.app a');
 
     return (
         <div className="app">
             <div className="navbar">
-                <a href={Route.HOME} className={withRoute(Route.HOME, 'active', '')}>
+                <a href={Route.HOME}
+                    className={withRoute(Route.HOME, 'active', '')}>
                     Home
                 </a>
                 {' | '}
-                <a href={Route.INTRO} className={withRoute(Route.INTRO, 'active', '')}>
+                <a href={Route.INTRO}
+                    className={withRoute(Route.INTRO, 'active', '')}>
                     Intro
                 </a>
             </div>
@@ -46,8 +47,12 @@ export default const App = () => {
                     <div className="section" id="home">
                         <h1>Home</h1>
                         <ul>
-                            <li><a href="/section/1">Section #1</a></li>
-                            <li><a href="/section/2">Section #2</a></li>
+                            <li>
+                                <a href="/section/1">Section #1</a>
+                            </li>
+                            <li>
+                                <a href="/section/2">Section #2</a>
+                            </li>
                         </ul>
                     </div>
                 ))}
@@ -84,9 +89,9 @@ import App from './App';
 ReactDOM.render(<App/>, document.querySelector('#root'));
 ```
 
-The browser environment allows the underlying context of the `<Router>` component to come up with a reasonable default route from the global context under the hood. Therefore wrapping the `<App/>` with a `<Router>` in the client-side code is unnecessary, unless the `<Router>` should have prop values different from the default (`route`, `includesSearchParams` (`false`), `includesHash` (`false`)).
+Generally, `route` returned from the `useRoute` hook is provided by the wrapping `<Router>` component. If there is no `<Router>` up the React node tree (as with `<App/>` in the example above), a default `route` based on the current page location is used. The wrapping `<Router>` is therefore unnecessary unless it should have prop values (`route`, `includesSearchParams`, `includesHash`) different from the default.
 
-## SSR
+# SSR
 
 While rendering server-side, it is convenient to provide a predefined context for the router hooks and utilities, so that the components were rendered according to the current route:
 
@@ -103,8 +108,6 @@ app.get('/', (req, res) => {
 });
 ```
 
-## Installation
+# Also
 
-```
-npm i github:axtk/react-router
-```
+- *[router](https://github.com/axtk/router)*, the `Route` class without React hooks

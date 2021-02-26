@@ -1,5 +1,5 @@
 import {useContext, useEffect, useState, useCallback} from 'react';
-import {withRoute} from 'router';
+import {withRoute} from '@axtk/router';
 import RouteContext from './RouteContext';
 
 /**

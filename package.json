@@ -1,5 +1,5 @@
 {
-  "name": "react-router",
+  "name": "@axtk/react-router",
   "version": "1.0.0",
   "description": "A lightweight React router",
   "main": "index.js",
@@ -9,21 +9,29 @@
   },
   "keywords": [
     "react",
+    "react router",
     "router",
     "history"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/axtk/react-router.git"
+  },
   "author": "axtk",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "router": "github:axtk/router"
+    "@axtk/router": "^1.1.1"
   },
   "peerDependencies": {
     "react": ">16.8"
   },
   "devDependencies": {
-    "esbuild": "^0.8.42"
+    "esbuild": "^0.8.52"
   },
   "browser": {
-    "react": "./react.external.js"
+    "react": "./external.react.js"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -19,9 +19,12 @@ const allKnownRoutes = Object.values(Route);
 
 export default const App = () => {
     // The `useRoute` hook enables the component's updates in response
-    // to URL changes, and sets an optional callback to these changes,
-    // if passed as an argument.
+    // to URL changes.
     const [route, withRoute] = useRoute();
+    // The `route` object returned from the hook is an instance of the
+    // `Route` class providing a `window.location`-like API for
+    // interaction with the URL history and allowing for subscription
+    // to URL path changes (see @axtk/router).
 
     // The `useRouteLinks` hook enables navigation without page
     // reloading via plain links, which is an alternative to creating
@@ -110,4 +113,4 @@ app.get('/', (req, res) => {
 
 # Also
 
-- *[router](https://github.com/axtk/router)*, the `Route` class without React hooks
+- *[@axtk/router](https://github.com/axtk/router)*, the `Route` class without React hooks

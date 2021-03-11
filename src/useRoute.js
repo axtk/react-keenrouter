@@ -1,5 +1,4 @@
 import {useContext, useEffect, useState} from 'react';
-import {withRoute} from '@axtk/router';
 import RouteContext from './RouteContext';
 
 /**
@@ -7,11 +6,12 @@ import RouteContext from './RouteContext';
  */
 export default () => {
     let route = useContext(RouteContext);
+    let withRoute = route.match.bind(route);
     let [path, setPath] = useState(route.href);
 
     useEffect(() => {
         return route.onChange(event => setPath(event.path));
     }, [route]);
 
-    return [route, withRoute(route)];
+    return [route, withRoute];
 };

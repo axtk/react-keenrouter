@@ -21,10 +21,14 @@ export default const App = () => {
     // The `useRoute` hook enables the component's updates in response
     // to URL changes.
     const [route, withRoute] = useRoute();
-    // The `route` object returned from the hook is an instance of the
-    // `Route` class providing a `window.location`-like API for
-    // interaction with the URL history and allowing for subscription
-    // to URL path changes (see @axtk/router).
+    // `route` is an instance of the `Route` class providing a
+    //     `window.location`-like API for interaction with the URL
+    //     history and allowing for subscription to URL path changes
+    //     (see @axtk/router).
+    // `withRoute(routePattern, x, y)` is a function acting somewhat
+    //     similar to the ternary operator (`?:`); it returns `x` if
+    //     `routePattern` matches the current route and `y` otherwise;
+    //     `x` and `y` can also be functions of `({path, params})`.
 
     // The `useRouteLinks` hook enables navigation without page
     // reloading via plain links, which is an alternative to creating

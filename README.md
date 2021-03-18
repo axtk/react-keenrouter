@@ -4,7 +4,7 @@
 
 *A lightweight React router*
 
-# Usage
+## Usage
 
 ```jsx
 // App.jsx
@@ -94,7 +94,9 @@ ReactDOM.render(<App/>, document.querySelector('#root'));
 
 Generally, `route` returned from the `useRoute` hook is provided by the wrapping `<Router>` component. If there is no `<Router>` up the React node tree (as with `<App/>` in the example above), a default `route` based on the current page location is used. The wrapping `<Router>` is therefore unnecessary unless it should have prop values (`route`, `includesSearchParams`, `includesHash`) different from the default.
 
-# SSR
+&rarr; *[Route API](https://github.com/axtk/router/blob/master/README.md#usage)*
+
+## Server-side rendering (SSR)
 
 While rendering server-side, it is convenient to provide a predefined context for the router hooks and utilities, so that the components were rendered according to the current route:
 
@@ -107,10 +109,11 @@ app.get('/', (req, res) => {
     const html = ReactDOMServer.renderToString(
         <Router route={req.originalUrl}><App/></Router>
     );
-    // ...
+
+    // Sending the resulting HTML to the client.
 });
 ```
 
-# Also
+## Also
 
 - *[@axtk/router](https://github.com/axtk/router)*, the `Route` class without React hooks

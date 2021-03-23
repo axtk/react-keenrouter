@@ -27,13 +27,16 @@ export default const App = () => {
     //     (see @axtk/router).
     // `withRoute(routePattern, x, y)` is a function acting somewhat
     //     similar to the ternary operator (`?:`); it returns `x` if
-    //     `routePattern` matches the current route and `y` otherwise;
-    //     `x` and `y` can also be functions of `({path, params})`.
+    //     `routePattern` matches the current route and `y` otherwise.
+    //     `x` and `y` can also be functions of `({path, params})` with
+    //     `params` containing the values of the capturing groups (both
+    //     named and unnamed) if `routePattern` is a regular expression.
 
     // The `useRouteLinks` hook enables navigation without page
-    // reloading via plain links, which is an alternative to creating
-    // a history link component.
-    // (This hook will affect only same-origin links.)
+    // reloading via plain links, which is an alternative to
+    // introducing a history link component to replace the plain links.
+    // (To comply with the History API, this hook will affect only
+    // same-origin links.)
     useRouteLinks('.app a');
 
     return (

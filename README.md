@@ -10,12 +10,12 @@
 // App.jsx
 import {useRoute, useRouteLinks} from '@axtk/react-router';
 
-const Route = {
+const AppRoute = {
     HOME: '/',
     INTRO: '/intro',
     SECTION: /^\/section\/(?<id>\d+)\/?$/,
 };
-const allKnownRoutes = Object.values(Route);
+const allKnownRoutes = Object.values(AppRoute);
 
 export default const App = () => {
     // The `useRoute` hook enables the component's updates in response
@@ -42,18 +42,18 @@ export default const App = () => {
     return (
         <div className="app">
             <div className="navbar">
-                <a href={Route.HOME}
-                    className={withRoute(Route.HOME, 'active', '')}>
+                <a href={AppRoute.HOME}
+                    className={withRoute(AppRoute.HOME, 'active', '')}>
                     Home
                 </a>
                 {' | '}
-                <a href={Route.INTRO}
-                    className={withRoute(Route.INTRO, 'active', '')}>
+                <a href={AppRoute.INTRO}
+                    className={withRoute(AppRoute.INTRO, 'active', '')}>
                     Intro
                 </a>
             </div>
             <div className="main">
-                {withRoute(Route.HOME, (
+                {withRoute(AppRoute.HOME, (
                     <div className="section" id="home">
                         <h1>Home</h1>
                         <ul>
@@ -66,12 +66,12 @@ export default const App = () => {
                         </ul>
                     </div>
                 ))}
-                {withRoute(Route.INTRO, (
+                {withRoute(AppRoute.INTRO, (
                     <div className="section" id="intro">
                         <h1>Intro</h1>
                     </div>
                 ))}
-                {withRoute(Route.SECTION, ({params}) => (
+                {withRoute(AppRoute.SECTION, ({params}) => (
                     <div className="section" id="section">
                         <h1>Section #{params.id}</h1>
                     </div>

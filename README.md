@@ -118,6 +118,22 @@ app.get('/', (req, res) => {
 });
 ```
 
+## Converting plain links
+
+In some cases, it can be necessary to make plain HTML links navigable without page reloading. For instance:
+
+- if the plain links are part of a server-fetched chunk of content, or
+- if the plain links are part of a fixed internationalization string, or
+- if the plain links have already been used in many parts of the application.
+
+In these cases, the `useRouteLinks` hook can be helpful.
+
+```js
+// With this hook, the plain links matching the selector will become
+// navigable without page reloading.
+useRouteLinks('.content a');
+```
+
 ## Also
 
 - *[@axtk/router](https://github.com/axtk/router)*, the `Route` class without React hooks

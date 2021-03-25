@@ -8,7 +8,11 @@
 
 ```jsx
 // App.jsx
-import {useRoute, useRouteLinks} from '@axtk/react-router';
+import {useRoute, A} from '@axtk/react-router';
+// `A` is a link component enabling navigation without page reloading.
+// (To comply with the History API, it won't require page reloads as
+// long as the `href` prop value is a same-origin location. With
+// non-same-origin URLs, `A` will act as a plain HTML link.)
 
 const AppRoute = {
     HOME: '/',
@@ -32,25 +36,18 @@ export default const App = () => {
     //     `params` containing the values of the capturing groups (both
     //     named and unnamed) if `routePattern` is a regular expression.
 
-    // The `useRouteLinks` hook enables navigation without page
-    // reloading via plain links, which is an alternative to
-    // introducing a history link component to replace the plain links.
-    // (To comply with the History API, this hook will affect only
-    // same-origin links.)
-    useRouteLinks('.app a');
-
     return (
         <div className="app">
             <div className="navbar">
-                <a href={AppRoute.HOME}
+                <A href={AppRoute.HOME}
                     className={withRoute(AppRoute.HOME, 'active', '')}>
                     Home
-                </a>
+                </A>
                 {' | '}
-                <a href={AppRoute.INTRO}
+                <A href={AppRoute.INTRO}
                     className={withRoute(AppRoute.INTRO, 'active', '')}>
                     Intro
-                </a>
+                </A>
             </div>
             <div className="main">
                 {withRoute(AppRoute.HOME, (
@@ -58,10 +55,10 @@ export default const App = () => {
                         <h1>Home</h1>
                         <ul>
                             <li>
-                                <a href="/section/1">Section #1</a>
+                                <A href="/section/1">Section #1</A>
                             </li>
                             <li>
-                                <a href="/section/2">Section #2</a>
+                                <A href="/section/2">Section #2</A>
                             </li>
                         </ul>
                     </div>

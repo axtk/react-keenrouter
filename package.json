@@ -1,6 +1,6 @@
 {
   "name": "@axtk/react-router",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "A lightweight React router",
   "main": "index.js",
   "scripts": {

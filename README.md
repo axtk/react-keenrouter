@@ -102,7 +102,7 @@ Generally, `route` returned from the `useRoute` hook is provided by the wrapping
 
 ## Server-side rendering (SSR)
 
-While rendering server-side, it is convenient to provide a predefined context for the router hooks and utilities, so that the components were rendered according to the current route:
+On the server, the current route location can be passed to the application by means of the `<Router>` component (in essentially the same way as it can be done in the client-side code):
 
 ```jsx
 // ...imports

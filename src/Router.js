@@ -4,10 +4,10 @@ import RouteContext from './RouteContext';
 
 export default ({
     route,
-    includesPathName,
+    includesPath,
     includesSearchParams,
     includesHash,
-    ignoresPathName,
+    ignoresPath,
     ignoresSearchParams,
     ignoresHash,
     children,
@@ -17,7 +17,7 @@ export default ({
     if (route == null || typeof route === 'string')
         value = new Route(route, {
             // default: true
-            pathname: includesPathName !== false && ignoresPathName !== true,
+            pathname: includesPath !== false && ignoresPath !== true,
             // default: false
             search: includesSearchParams === true && ignoresSearchParams !== false,
             // default: false

@@ -40,12 +40,12 @@ export default const App = () => {
         <div className="app">
             <div className="navbar">
                 <A href={AppRoute.HOME}
-                    className={withRoute(AppRoute.HOME, 'active', '')}>
+                    className={withRoute(AppRoute.HOME, 'active')}>
                     Home
                 </A>
                 {' | '}
                 <A href={AppRoute.INTRO}
-                    className={withRoute(AppRoute.INTRO, 'active', '')}>
+                    className={withRoute(AppRoute.INTRO, 'active')}>
                     Intro
                 </A>
             </div>

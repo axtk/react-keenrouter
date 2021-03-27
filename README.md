@@ -100,6 +100,8 @@ Generally, `route` returned from the `useRoute` hook is provided by the wrapping
 
 &rarr; *[Route API](https://github.com/axtk/router/blob/master/README.md#usage)*
 
+As shown in this example, the application routes can be matched by means of the `withRoute` helper function. Conceptually, it is an extension to the [conditional rendering](https://reactjs.org/docs/conditional-rendering.html#inline-if-else-with-conditional-operator) pattern and it adopts the ternary structure of the conditional operator. Also, as a function rather than a route matching component, `withRoute` can be equally used with components and prop values.
+
 ## Server-side rendering (SSR)
 
 On the server, the current route location can be passed to the application by means of the `<Router>` component (in essentially the same way as it can be done in the client-side code):

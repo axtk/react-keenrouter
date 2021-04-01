@@ -99,8 +99,6 @@ ReactDOM.render(<App/>, document.querySelector('#root'));
 
 Generally, `route` returned from the `useRoute` hook is provided by the wrapping `<Router>` component. If there is no `<Router>` up the React node tree (as with `<App/>` in the example above), a default `route` based on the current page location is used. The wrapping `<Router>` is therefore unnecessary unless it should have prop values (`route`, `includesSearchParams`, `includesHash`) different from the default.
 
-&rarr; *[Route API](https://github.com/axtk/router/blob/master/README.md#usage)*
-
 Also, as shown in this example, the application routes can be matched by means of the `withRoute` helper function which adopts the ternary structure of the conditional operator to fulfil the commonly used [conditional rendering](https://reactjs.org/docs/conditional-rendering.html#inline-if-else-with-conditional-operator) pattern. As a function rather than a route matching component, `withRoute` can be equally used with components and prop values.
 
 ## Server-side rendering (SSR)
@@ -139,4 +137,4 @@ useRouteLinks('.content a');
 
 ## Also
 
-- *[@axtk/router](https://github.com/axtk/router)*, the `Route` class without React hooks
+- *[@axtk/router](https://github.com/axtk/router)*, the `Route` class without React hooks + [Route API](https://github.com/axtk/router/blob/master/README.md#usage)

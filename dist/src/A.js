@@ -3,7 +3,7 @@ import { isRouteLink, getPath } from '@axtk/router';
 import { RouteContext } from './RouteContext';
 export const A = ({ href, target, onClick, ...otherProps }) => {
     let route = useContext(RouteContext);
-    let onLinkClick = useCallback((event) => {
+    let onLinkClick = useCallback(event => {
         if (isRouteLink({ href, target })) {
             event.preventDefault();
             route.assign(getPath(href));

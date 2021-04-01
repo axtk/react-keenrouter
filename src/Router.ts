@@ -1,4 +1,4 @@
-import {createElement, ReactNode, ReactElement} from 'react';
+import {createElement, FC} from 'react';
 import {Route} from '@axtk/router';
 import {RouteContext} from './RouteContext';
 
@@ -10,10 +10,9 @@ export interface RouterProps {
     ignoresPath?: boolean,
     ignoresSearchParams?: boolean,
     ignoresHash?: boolean,
-    children?: ReactNode,
 }
 
-export const Router = ({
+export const Router: FC<RouterProps> = ({
     route,
     includesPath,
     includesSearchParams,
@@ -22,7 +21,7 @@ export const Router = ({
     ignoresSearchParams,
     ignoresHash,
     children,
-}: RouterProps): ReactElement => {
+}) => {
     let value;
 
     if (route instanceof Route)

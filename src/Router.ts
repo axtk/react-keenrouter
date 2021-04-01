@@ -1,8 +1,19 @@
-import {createElement} from 'react';
+import {createElement, ReactNode, ReactElement} from 'react';
 import {Route} from '@axtk/router';
-import RouteContext from './RouteContext';
+import {RouteContext} from './RouteContext';
 
-export default ({
+export interface RouterProps {
+    route?: string | null | Route,
+    includesPath?: boolean,
+    includesSearchParams?: boolean,
+    includesHash?: boolean,
+    ignoresPath?: boolean,
+    ignoresSearchParams?: boolean,
+    ignoresHash?: boolean,
+    children?: ReactNode,
+}
+
+export const Router = ({
     route,
     includesPath,
     includesSearchParams,
@@ -11,10 +22,12 @@ export default ({
     ignoresSearchParams,
     ignoresHash,
     children,
-}) => {
+}: RouterProps): ReactElement => {
     let value;
 
-    if (route == null || typeof route === 'string')
+    if (route instanceof Route)
+        value = route;
+    else if (route == null || typeof route === 'string')
         value = new Route(route, {
             // default: true
             pathname: includesPath !== false && ignoresPath !== true,
@@ -23,8 +36,6 @@ export default ({
             // default: false
             hash: includesHash === true && ignoresHash !== false,
         });
-    else if (route instanceof Route)
-        value = route;
     else
         throw new Error('Router route of unknown type');
 

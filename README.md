@@ -1,6 +1,7 @@
 [![npm](https://img.shields.io/npm/v/@axtk/react-router?labelColor=royalblue&color=royalblue&style=flat-square)](https://www.npmjs.com/package/@axtk/react-router)
 ![browser](https://img.shields.io/badge/browser-✓-blue?labelColor=dodgerblue&color=dodgerblue&style=flat-square)
 [![SSR](https://img.shields.io/badge/SSR-✓-blue?labelColor=dodgerblue&color=dodgerblue&style=flat-square)](#ssr)
+[![TypeScript](https://img.shields.io/badge/TypeScript-✓-blue?labelColor=dodgerblue&color=dodgerblue&style=flat-square)](#ssr)
 
 *A lightweight React router*
 

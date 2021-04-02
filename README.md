@@ -103,13 +103,10 @@ Also, as shown in this example, the application routes can be matched by means o
 
 ## Server-side rendering (SSR)
 
-On the server, the current route location can be passed to the application by means of the `<Router>` component (in essentially the same way as it can be done in the client-side code):
+For the initial render on the server, the `<Router>` component can be used to pass the current route location to the application in essentially the same way as it can be done in the client-side code:
 
 ```jsx
-// ...imports
-import {Router} from '@axtk/react-router';
-
-// with Express
+// On the Express server
 app.get('/', (req, res) => {
     const html = ReactDOMServer.renderToString(
         <Router route={req.originalUrl}><App/></Router>

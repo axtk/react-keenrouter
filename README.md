@@ -117,7 +117,7 @@ app.get('/', (req, res) => {
 
 ## Converting plain links
 
-In some cases, it can be necessary to make plain HTML links navigable without page reloading. For instance:
+In some cases, it can be necessary to make plain HTML links navigable without page reloading, where the route link component (`<A>` in the example above) is not applicable right away. For instance:
 
 - if the plain links are part of a server-fetched chunk of content, or
 - if the plain links are part of a fixed internationalization string, or

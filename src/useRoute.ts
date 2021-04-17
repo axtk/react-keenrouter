@@ -1,5 +1,5 @@
 import {useContext, useState, useEffect, useMemo} from 'react';
-import {withRoute as withRouteFactory, Route, RoutePattern} from '@axtk/router';
+import {withRoute as withRouteFactory, Route} from '@axtk/router';
 import {RouteContext} from './RouteContext';
 
 export type WithRoute = ReturnType<typeof withRouteFactory>;

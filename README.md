@@ -4,6 +4,10 @@
 
 *A lightweight React router*
 
+This package introduces a link component `<A>` (similar to the HTML link tag `<a>` and enhanced to enable URL transitions without page reloading) and a React hook `useRoute`.
+
+The example below outlines a typical setup for these utilities. It also shows how the application routes can be matched by means of the `withRoute` helper function which adopts the structure of the conditional ternary operator to make use of the commonly used [conditional rendering](https://reactjs.org/docs/conditional-rendering.html#inline-if-else-with-conditional-operator) pattern. As a function rather than a route matching component, `withRoute` can be equally used with components and prop values, as shown in the example.
+
 ## Usage
 
 ```jsx
@@ -26,15 +30,15 @@ export default const App = () => {
     // to URL changes.
     const [route, withRoute] = useRoute();
     // `route` is an instance of the `Route` class providing a
-    //     `window.location`-like API for interaction with the URL
-    //     history and allowing for subscription to URL path changes
-    //     (see @axtk/router).
+    //    `window.location`-like API for interaction with the URL
+    //    history and allowing for subscription to URL path changes
+    //    (see @axtk/router).
     // `withRoute(routePattern, x, y)` is a function acting somewhat
-    //     similar to the ternary operator (`?:`); it returns `x` if
-    //     `routePattern` matches the current route and `y` otherwise.
-    //     `x` and `y` can also be functions of `({path, params})` with
-    //     `params` containing the values of the capturing groups (both
-    //     named and unnamed) if `routePattern` is a regular expression.
+    //    similar to the ternary operator (`?:`); it returns `x` if
+    //    `routePattern` matches the current route and `y` otherwise.
+    //    `x` and `y` can also be functions of `({path, params})` with
+    //    `params` containing the values of the capturing groups (both
+    //    named and unnamed) if `routePattern` is a regular expression.
 
     return (
         <div className="app">
@@ -98,8 +102,6 @@ ReactDOM.render(<App/>, document.querySelector('#root'));
 
 Generally, `route` returned from the `useRoute` hook is provided by the wrapping `<Router>` component. If there is no `<Router>` up the React node tree (as with `<App/>` in the example above), a default `route` based on the current page location is used. The wrapping `<Router>` is therefore unnecessary unless it should have prop values (`route`, `includesSearchParams`, `includesHash`) different from the default.
 
-Also, as shown in this example, the application routes can be matched by means of the `withRoute` helper function which adopts the ternary structure of the conditional operator to fulfil the commonly used [conditional rendering](https://reactjs.org/docs/conditional-rendering.html#inline-if-else-with-conditional-operator) pattern. As a function rather than a route matching component, `withRoute` can be equally used with components and prop values.
-
 ## Server-side rendering (SSR)
 
 For the initial render on the server, the `<Router>` component can be used to pass the current route location to the application in essentially the same way as it can be done in the client-side code:
@@ -117,7 +119,7 @@ app.get('/', (req, res) => {
 
 ## Converting plain links
 
-In some cases, it can be necessary to make plain HTML links navigable without page reloading, where the route link component (`<A>` in the example above) is not applicable right away. For instance:
+In some cases, it can be necessary to make plain HTML links navigable without page reloading, where the route link component (shown in the example above) is not applicable right away. For instance:
 
 - if the plain links are part of a server-fetched chunk of content, or
 - if the plain links are part of a fixed internationalization string, or

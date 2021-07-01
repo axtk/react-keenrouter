@@ -1,12 +1,12 @@
 import {useContext, useCallback, createElement, AnchorHTMLAttributes} from 'react';
-import {isRouteLink, getPath} from '@axtk/router';
+import {hasRouteLinkProps, getPath} from '@axtk/router';
 import {RouteContext} from './RouteContext';
 
 export const A = ({href, target, onClick, ...otherProps}: AnchorHTMLAttributes<HTMLAnchorElement>) => {
     let route = useContext(RouteContext);
 
     let onLinkClick = useCallback(event => {
-        if (isRouteLink({href, target})) {
+        if (hasRouteLinkProps({href, target})) {
             event.preventDefault();
             route.assign(getPath(href));
         }

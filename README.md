@@ -130,7 +130,8 @@ In these cases, the `useRouteLinks` hook can be helpful.
 ```js
 // With this hook, the plain links matching the selector will become
 // navigable without page reloading.
-useRouteLinks('.content a');
+useRouteLinks(componentRef, '.content a');
+// `componentRef` is a value returned from the React's `useRef` hook.
 ```
 
 ## Also

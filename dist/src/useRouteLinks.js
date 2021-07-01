@@ -7,7 +7,11 @@ import { RouteContext } from './RouteContext';
  * The links can be represented as a selector, or an HTML element,
  * or a collection of HTML elements.
  */
-export const useRouteLinks = (links) => {
+export const useRouteLinks = (scopeRef, links) => {
     let route = useContext(RouteContext);
-    useEffect(() => route.subscribe(links), [route, links]);
+    useEffect(() => {
+        let scope = scopeRef && scopeRef.current;
+        if (scope)
+            return route.subscribe(links, scope);
+    }, [route, links, scopeRef]);
 };

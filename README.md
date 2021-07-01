@@ -84,7 +84,13 @@ export default const App = () => {
                 ))}
                 <div className="footer">
                     <hr/>
-                    {new Date().toDateString()}
+                    <button onClick={() => {
+                        // `route` can be handy where `<A>` and
+                        // `withRoute` are not applicable
+                        route.assign(AppRoute.HOME);
+                    }}>
+                        Home
+                    </button>
                 </div>
             </div>
         </div>

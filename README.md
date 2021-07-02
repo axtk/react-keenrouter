@@ -4,9 +4,9 @@
 
 *A lightweight React router*
 
-This package introduces a link component `<A>` (similar to the HTML link tag `<a>` and enhanced to enable URL transitions without page reloading) and a React hook `useRoute`.
+The example below outlines a typical setup for the utilities introduced in this package: the link component `<A>` (similar to the HTML link tag `<a>` and enhanced to enable URL transitions without page reloading) and the React hook `useRoute`.
 
-The example below outlines a typical setup for these utilities. It also shows how the application routes can be matched by means of the `withRoute` helper function which adopts the structure of the conditional ternary operator to make use of the commonly used [conditional rendering](https://reactjs.org/docs/conditional-rendering.html#inline-if-else-with-conditional-operator) pattern. As a function rather than a route matching component, `withRoute` can be equally used with components and prop values, as shown in the example.
+The example also shows how the application routes can be matched by means of the `withRoute` helper function which acts similar to the conditional ternary operator to make use of the commonly used [conditional rendering](https://reactjs.org/docs/conditional-rendering.html#inline-if-else-with-conditional-operator) pattern. As a function rather than a route matching component, `withRoute` can be equally used with components and prop values, as shown in the example.
 
 ## Usage
 

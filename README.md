@@ -72,12 +72,12 @@ export default const App = () => {
                     </div>
                 ))}
                 {withRoute(AppRoute.SECTION, ({params}) => (
-                    <div className="section" id="section">
+                    <div className="section">
                         <h1>Section #{params.id}</h1>
                     </div>
                 ))}
                 {withRoute(allKnownRoutes, null, (
-                    <div className="section" id="404">
+                    <div className="error section">
                         <h1>404 Not found</h1>
                     </div>
                 ))}
@@ -105,7 +105,7 @@ import App from './App';
 ReactDOM.render(<App/>, document.querySelector('#root'));
 ```
 
-Generally, `route` returned from the `useRoute` hook is provided by the wrapping `<Router>` component. If there is no `<Router>` up the React node tree (as with `<App/>` in the example above), a default `route` based on the current page location is used. The wrapping `<Router>` is therefore unnecessary unless it should have prop values (`route`, `includesSearchParams`, `includesHash`) different from the default.
+Generally, `route` returned from the `useRoute` hook is provided by the wrapping `<Router>` component. If there is no `<Router>` up the React node tree (like with `<App/>` in the example above), a default `route` based on the current page location is used. The wrapping `<Router>` is therefore unnecessary unless it should have prop values (`route`, `includesSearchParams`, `includesHash`) different from the default.
 
 ## Server-side rendering (SSR)
 

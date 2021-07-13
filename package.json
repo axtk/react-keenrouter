@@ -21,7 +21,7 @@
   "author": "axtk",
   "license": "MIT",
   "dependencies": {
-    "@axtk/router": "^1.4.0"
+    "@axtk/router": "^1.4.1"
   },
   "peerDependencies": {
     "react": ">16.8"

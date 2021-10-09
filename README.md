@@ -2,11 +2,12 @@
 
 # @axtk/react-router
 
-*A lightweight React router*
+Core ideas:
 
-The example below outlines a typical setup for the utilities introduced in this package: the link component `<A>` (similar to the HTML link tag `<a>` and enhanced to enable URL transitions without page reloading) and the React hook `useRoute`.
-
-The example also shows how the application routes can be matched by means of the `withRoute` helper function which acts similar to the conditional ternary operator to make use of the commonly used [conditional rendering](https://reactjs.org/docs/conditional-rendering.html#inline-if-else-with-conditional-operator) pattern. As a function rather than a route matching component, `withRoute` can be equally used with components and prop values, as shown in the example.
+- Route matching might look like [conditional rendering](https://reactjs.org/docs/conditional-rendering.html#inline-if-else-with-conditional-operator) (to be easily applicable to both components and props).
+- The route link component might have the same props as an ordinary HTML link (to be easily convertable and immediately familiar).
+- There might be a hook to convert plain HTML links to route links.
+- Server-side rendering (SSR) might not require a substantially different router setup.
 
 ## Usage
 
@@ -105,7 +106,7 @@ import App from './App';
 ReactDOM.render(<App/>, document.querySelector('#root'));
 ```
 
-Generally, `route` returned from the `useRoute` hook is provided by the wrapping `<Router>` component. If there is no `<Router>` up the React node tree (like with `<App/>` in the example above), a default `route` based on the current page location is used. The wrapping `<Router>` is therefore unnecessary unless it should have prop values (`route`, `includesSearchParams`, `includesHash`) different from the default.
+Generally, `route` returned from the `useRoute` hook is provided by the wrapping `<Router>` component. If there is no `<Router>` up the React node tree (like with `<App/>` in the example above), a default `route` based on the current page location is used. Therefore, a wrapping `<Router>` can only be useful to provide a custom `route` prop value (which is either a string location or a `Route` class instance).
 
 ## Server-side rendering (SSR)
 
@@ -124,7 +125,7 @@ app.get('/', (req, res) => {
 
 ## Converting plain links
 
-In some cases, it can be necessary to make plain HTML links navigable without page reloading, where the route link component (shown in the example above) is not applicable right away. For instance:
+In some cases, it can be necessary to convert plain HTML links to SPA route links (that is to make them navigable without page reloading), where the route link component (shown in the example above) is not applicable right away. For instance:
 
 - if the plain links are part of a server-fetched chunk of content, or
 - if the plain links are part of a fixed internationalization string, or

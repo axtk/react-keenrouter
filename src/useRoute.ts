@@ -9,7 +9,7 @@ export const useRoute = (): [Route, WithRoute] => {
     let [path, setPath] = useState(route.href);
 
     useEffect(
-        () => route.onChange(event => setPath(event.path)),
+        () => route.onChange(event => setPath(event.href)),
         [route]
     );
 

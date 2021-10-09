@@ -4,7 +4,7 @@ import { RouteContext } from './RouteContext';
 export const useRoute = () => {
     let route = useContext(RouteContext);
     let [path, setPath] = useState(route.href);
-    useEffect(() => route.onChange(event => setPath(event.path)), [route]);
+    useEffect(() => route.onChange(event => setPath(event.href)), [route]);
     let withRoute = useMemo(() => withRouteFactory(route), [route]);
     return [route, withRoute];
 };

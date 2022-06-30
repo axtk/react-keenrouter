@@ -98,7 +98,7 @@ const App = () => {
 createRoot(document.querySelector('#app')).render(<App/>);
 ```
 
-Generally, `route` returned from the `useRoute` hook is provided by the wrapping `<Router>` component. If there is no `<Router>` up the React node tree (like with `<App/>` in the example above), a default `route` based on the current page location is used. Therefore, a wrapping `<Router>` can only be useful to provide a custom `route` prop value (which is either a string location or a `Route` class instance).
+Generally, `route` returned from the `useRoute` hook is provided by the wrapping `<Router>` component. If there is no `<Router>` up the React node tree (like with `<App/>` in the example above), a default `route` based on the current page location is used. Therefore, a wrapping `<Router>` can only be useful to provide a custom `route` prop value (which is either a string location or a `Location` class instance).
 
 ## Server-side rendering (SSR)
 

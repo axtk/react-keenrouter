@@ -10,7 +10,7 @@
 ## Usage
 
 ```jsx
-// App.jsx
+import {createRoot} from 'react-dom/client';
 import {useRoute, A} from 'postrouter';
 // `A` is a link component enabling navigation without page reloading.
 // (To comply with the History API, it won't require page reloads as
@@ -24,7 +24,7 @@ const AppRoute = {
 };
 const allKnownRoutes = Object.values(AppRoute);
 
-export default const App = () => {
+const App = () => {
     // The `useRoute` hook enables the component's updates in response
     // to URL changes.
     const [route, withRoute] = useRoute();
@@ -94,14 +94,8 @@ export default const App = () => {
         </div>
     );
 };
-```
 
-```jsx
-// index.js
-import ReactDOM from 'react-dom';
-import App from './App';
-
-ReactDOM.render(<App/>, document.querySelector('#root'));
+createRoot(document.querySelector('#app')).render(<App/>);
 ```
 
 Generally, `route` returned from the `useRoute` hook is provided by the wrapping `<Router>` component. If there is no `<Router>` up the React node tree (like with `<App/>` in the example above), a default `route` based on the current page location is used. Therefore, a wrapping `<Router>` can only be useful to provide a custom `route` prop value (which is either a string location or a `Route` class instance).

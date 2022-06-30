@@ -1,3 +1,3 @@
-export const isLinkElement = (x: any): x is HTMLAnchorElement | HTMLAreaElement => (
-    x instanceof HTMLAnchorElement || x instanceof HTMLAreaElement
-);
+export function isLinkElement(x: unknown): x is HTMLAnchorElement | HTMLAreaElement {
+    return x instanceof HTMLAnchorElement || x instanceof HTMLAreaElement;
+}

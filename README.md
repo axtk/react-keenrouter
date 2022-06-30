@@ -1,19 +1,17 @@
-[![npm](https://img.shields.io/npm/v/@axtk/react-router?labelColor=royalblue&color=royalblue&style=flat-square)](https://www.npmjs.com/package/@axtk/react-router) [![GitHub](https://img.shields.io/badge/-GitHub-royalblue?labelColor=royalblue&color=royalblue&style=flat-square&logo=github)](https://github.com/axtk/react-router) ![browser](https://img.shields.io/badge/browser-✓-345?labelColor=345&color=345&style=flat-square) [![SSR](https://img.shields.io/badge/SSR-✓-345?labelColor=345&color=345&style=flat-square)](#server-side-rendering-ssr) ![TypeScript](https://img.shields.io/badge/TypeScript-✓-345?labelColor=345&color=345&style=flat-square)
+[![npm](https://img.shields.io/npm/v/postrouter?labelColor=royalblue&color=royalblue&style=flat-square)](https://www.npmjs.com/package/postrouter) [![GitHub](https://img.shields.io/badge/-GitHub-royalblue?labelColor=royalblue&color=royalblue&style=flat-square&logo=github)](https://github.com/axtk/postrouter) ![browser](https://img.shields.io/badge/browser-✓-345?labelColor=345&color=345&style=flat-square) [![SSR](https://img.shields.io/badge/SSR-✓-345?labelColor=345&color=345&style=flat-square)](#server-side-rendering-ssr) ![TypeScript](https://img.shields.io/badge/TypeScript-✓-345?labelColor=345&color=345&style=flat-square)
 
-# @axtk/react-router
+# postrouter
 
-Core ideas:
-
-- Route matching might look like [conditional rendering](https://reactjs.org/docs/conditional-rendering.html#inline-if-else-with-conditional-operator) (to be easily applicable to both components and props).
-- The route link component might have the same props as an ordinary HTML link (to be easily convertable and immediately familiar).
-- There might be a hook to convert plain HTML links to route links.
-- Server-side rendering (SSR) might not require a substantially different router setup.
+- route matching looks like [conditional rendering](https://reactjs.org/docs/conditional-rendering.html#inline-if-else-with-conditional-operator) (to be easily applicable to both components and props);
+- the route link component looks like an ordinary HTML link (to be easily convertable and immediately familiar);
+- there is a hook to convert plain HTML links to route links (e.g. to apply to portions of server-fetched static content);
+- server-side rendering (SSR) looks like client-side setup.
 
 ## Usage
 
 ```jsx
 // App.jsx
-import {useRoute, A} from '@axtk/react-router';
+import {useRoute, A} from 'postrouter';
 // `A` is a link component enabling navigation without page reloading.
 // (To comply with the History API, it won't require page reloads as
 // long as the `href` prop value is a same-origin location. With
@@ -139,7 +137,3 @@ In these cases, the `useRouteLinks` hook can be helpful.
 useRouteLinks(componentRef, '.content a');
 // `componentRef` is a value returned from the React's `useRef` hook.
 ```
-
-## Also
-
-- *[@axtk/router](https://github.com/axtk/router)*, the `Route` class without React hooks + [Route API](https://github.com/axtk/router/blob/master/README.md#usage)

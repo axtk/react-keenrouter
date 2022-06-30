@@ -1,18 +1,19 @@
-import {createElement, FC} from 'react';
-import {Route} from '@axtk/router';
+import {createElement, ReactNode} from 'react';
+import {Location} from 'histloc';
 import {RouteContext} from './RouteContext';
 
 export type RouterProps = {
-    route?: string | null | undefined | Route;
+    route?: string | null | undefined | Location;
+    children?: ReactNode;
 };
 
-export const Router: FC<RouterProps> = ({route, children}) => {
+export const Router = ({route, children}: RouterProps) => {
     let value;
 
-    if (route instanceof Route)
+    if (route instanceof Location)
         value = route;
     else if (route == null || typeof route === 'string')
-        value = new Route(route);
+        value = new Location(route);
     else
         throw new Error('Router route of unknown type');
 

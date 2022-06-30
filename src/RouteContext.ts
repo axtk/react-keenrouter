@@ -1,4 +1,4 @@
 import {createContext} from 'react';
-import {Route} from '@axtk/router';
+import {Location} from 'histloc';
 
-export const RouteContext = createContext(new Route());
+export const RouteContext = createContext(new Location());

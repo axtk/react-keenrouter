@@ -1,9 +1,9 @@
 import {useContext, useCallback, createElement, AnchorHTMLAttributes, MouseEvent} from 'react';
-import {isSameOrigin} from '@axtk/router';
+import {isSameOrigin} from 'histloc';
 import {RouteContext} from './RouteContext';
 import {isRouteEvent} from './isRouteEvent';
 
-export const A = ({href, target, onClick, ...otherProps}: AnchorHTMLAttributes<HTMLAnchorElement>) => {
+export const A = ({href, target, onClick, ...rest}: AnchorHTMLAttributes<HTMLAnchorElement>) => {
     let route = useContext(RouteContext);
 
     let handleClick = useCallback((event: MouseEvent<HTMLAnchorElement>) => {
@@ -16,5 +16,5 @@ export const A = ({href, target, onClick, ...otherProps}: AnchorHTMLAttributes<H
         }
     }, [route, href, target, onClick]);
 
-    return createElement('a', {href, target, onClick: handleClick, ...otherProps});
+    return createElement('a', {href, target, onClick: handleClick, ...rest});
 };

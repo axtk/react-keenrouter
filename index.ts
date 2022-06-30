@@ -1,4 +1,4 @@
-export * from '@axtk/router';
+export * from 'histloc';
 export * from './src/Router';
 export * from './src/useRoute';
 export * from './src/A';

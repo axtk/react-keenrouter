@@ -18,19 +18,24 @@ export const useRouteLinks = (
     let route = useContext(RouteContext);
 
     useEffect(() => {
-        let scope = scopeRef && scopeRef.current;
+        let scope = scopeRef?.current;
         if (!scope) return;
 
-        return subscribe(links, scope, 'click', (event, element) => {
-            if (
-                !event.defaultPrevented &&
-                (event instanceof MouseEvent || event instanceof TouchEvent) &&
-                isLinkElement(element) &&
-                isRouteEvent(event, element)
-            ) {
-                event.preventDefault();
-                route.assign(element.href);
-            }
+        return subscribe({
+            target: links,
+            scope,
+            type: 'click',
+            handler: (event, element) => {
+                if (
+                    !event.defaultPrevented &&
+                    (event instanceof MouseEvent || event instanceof TouchEvent) &&
+                    isLinkElement(element) &&
+                    isRouteEvent(event, element)
+                ) {
+                    event.preventDefault();
+                    route.assign(element.href);
+                }
+            },
         });
     }, [route, links, scopeRef]);
 };

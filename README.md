@@ -2,10 +2,10 @@
 
 # postrouter
 
-- route matching looks like [conditional rendering](https://reactjs.org/docs/conditional-rendering.html#inline-if-else-with-conditional-operator) (to be easily applicable to both components and props);
-- the route link component looks like an ordinary HTML link (to be easily convertable and immediately familiar);
-- there is a hook to convert plain HTML links to route links (e.g. to apply to portions of server-fetched static content);
-- server-side rendering (SSR) looks like client-side setup.
+- the route link component looks similar to a plain HTML link (which makes the route link immediately familiar and interchangeable with the ordinary HTML link);
+- route matching is easily applicable to both components and prop values;
+- plain HTML links (e.g. in a chunk of static content) are easily convertable to route links;
+- the server-side rendering (SSR) setup is identical to the client-side setup.
 
 ## Usage
 
@@ -98,7 +98,7 @@ const App = () => {
 createRoot(document.querySelector('#app')).render(<App/>);
 ```
 
-Generally, `route` returned from the `useRoute` hook is provided by the wrapping `<Router>` component. If there is no `<Router>` up the React node tree (like with `<App/>` in the example above), a default `route` based on the current page location is used. Therefore, a wrapping `<Router>` can only be useful to provide a custom `route` prop value (which is either a string location or a `Location` class instance).
+The `route` object returned from the `useRoute()` hook is provided by the wrapping `<Router>` component. If there is no `<Router>` up the React node tree (like with `<App/>` in the example above), a default `route` based on the current page location is used. Therefore, a wrapping `<Router>` can only be useful to provide a custom `route` prop value (which is either a string location or a `Location` class instance).
 
 ## Server-side rendering (SSR)
 
@@ -123,7 +123,7 @@ In some cases, it can be necessary to convert plain HTML links to SPA route link
 - if the plain links are part of a fixed internationalization string, or
 - if the plain links have already been used in many parts of the application.
 
-In these cases, the `useRouteLinks` hook can be helpful.
+In these cases, the `useRouteLinks()` hook can be helpful.
 
 ```js
 // With this hook, the plain links matching the selector will become

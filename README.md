@@ -75,6 +75,9 @@ const App = () => {
                         <h1>Section #{params.id}</h1>
                     </div>
                 ))}
+                {/* below, rendering `null` if the current location
+                    matches `allKnownRoutes`, and the 404 error screen
+                    otherwise */}
                 {withRoute(allKnownRoutes, null, (
                     <div className="error section">
                         <h1>404 Not found</h1>

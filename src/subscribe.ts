@@ -1,14 +1,14 @@
 type SubscribeParams = {
     target: string | Node | Array<string | Node> | HTMLCollection | NodeList;
-    scope: Element | Document;
-    type: string;
+    scope?: Node;
+    type?: string;
     handler: (event: Event, element?: Element) => void;
 };
 
 export function subscribe({
     target,
-    scope,
-    type,
+    scope = document,
+    type = 'click',
     handler,
 }: SubscribeParams) {
     if (typeof target === 'string') {
@@ -20,7 +20,9 @@ export function subscribe({
         return () => scope.removeEventListener(type, extendedHandler);
     }
     else if (target instanceof Element) {
-        let extendedHandler = (event: Event) => handler(event, target);
+        let extendedHandler = (event: Event) => {
+            if (scope.contains(target)) handler(event, target);
+        };
         target.addEventListener(type, extendedHandler);
         return () => target.removeEventListener(type, extendedHandler);
     }

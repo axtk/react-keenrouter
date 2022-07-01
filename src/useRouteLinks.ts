@@ -24,7 +24,6 @@ export const useRouteLinks = (
         return subscribe({
             target: links,
             scope,
-            type: 'click',
             handler: (event, element) => {
                 if (
                     !event.defaultPrevented &&

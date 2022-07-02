@@ -4,8 +4,9 @@
 
 - the route link component looks similar to a plain HTML link (which makes the route link immediately familiar and interchangeable with the ordinary HTML link);
 - route matching is easily applicable to both components and prop values;
-- plain HTML links (e.g. in a chunk of static content) are easily convertable to route links;
-- the server-side rendering (SSR) setup is identical to the client-side setup.
+- plain HTML links are easily convertable to route links (e.g. in a chunk of static HTML content);
+- the server-side rendering (SSR) setup is identical to the client-side setup;
+- routing customization is flexible enough to go beyond the URL-based routing.
 
 ## Usage
 

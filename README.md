@@ -101,7 +101,32 @@ const App = () => {
 createRoot(document.querySelector('#app')).render(<App/>);
 ```
 
-The `route` object returned from the `useRoute()` hook is provided by the wrapping `<Router>` component. If there is no `<Router>` up the React node tree (like with `<App/>` in the example above), a default `route` based on the current page location is used. Therefore, a wrapping `<Router>` can only be useful to provide a custom `route` prop value (which is either a string location or a `Location` class instance).
+The `route` object returned from the `useRoute()` hook is an instance of the [`Location`](https://www.npmjs.com/package/histloc) class provided by the wrapping `<Router>` component. If there is no `<Router>` up the React node tree (like with `<App/>` in the example above), a default `route` based on the current page location is used. Therefore, a wrapping `<Router>` can be useful to provide a custom `route` prop value that accepts either a string location or a `Location` class instance.
+
+## Custom routing
+
+The default `route` object returned from the `useRoute()` hook responds to changes in the entire URL, with `pathname`, `search`, and `hash` combined. This can be changed by providing an instance of a [customized](https://www.npmjs.com/package/histloc#custom-behavior) extension of the `Location` class to the `Router` component.
+
+```jsx
+import {createRoot} from 'react-dom/client';
+import {Location, getPath} from 'histloc';
+import {Router} from 'postrouter';
+
+export class PathLocation extends Location {
+    deriveHref(location) {
+        // disregarding `search` and `hash`
+        return getPath(location, {search: false, hash: false});
+    }
+}
+
+createRoot(document.querySelector('#app')).render(
+    <Router route={new PathLocation()}>
+        <App/>
+    </Router>
+);
+```
+
+Extending the `Location` class gives plenty of room for customization. This approach allows in fact to go beyond the URL-based routing altogether.
 
 ## Server-side rendering (SSR)
 

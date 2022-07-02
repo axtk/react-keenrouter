@@ -11,10 +11,10 @@ import {isRouteEvent} from './isRouteEvent';
  * The links can be represented as a selector, or an HTML element,
  * or a collection of HTML elements.
  */
-export const useRouteLinks = (
+export function useRouteLinks(
     scopeRef: RefObject<Element | Document>,
     links: string | Node | Array<string | Node> | HTMLCollection | NodeList,
-): void => {
+): void {
     let route = useContext(RouteContext);
 
     useEffect(() => {
@@ -37,4 +37,4 @@ export const useRouteLinks = (
             },
         });
     }, [route, links, scopeRef]);
-};
+}

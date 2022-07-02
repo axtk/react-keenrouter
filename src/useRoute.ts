@@ -4,7 +4,7 @@ import {RouteContext} from './RouteContext';
 
 export type WithRoute = Location['evaluate'];
 
-export const useRoute = (): [Location, WithRoute] => {
+export function useRoute(): [Location, WithRoute] {
     let route = useContext(RouteContext);
     let [path, setPath] = useState(route.href);
 
@@ -19,4 +19,4 @@ export const useRoute = (): [Location, WithRoute] => {
     );
 
     return [route, withRoute];
-};
+}

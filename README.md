@@ -2,7 +2,7 @@
 
 # postrouter
 
-- the route link component looks similar to a plain HTML link (which makes the route link immediately familiar and interchangeable with the ordinary HTML link);
+- the route link component looks similar to a plain HTML link, which makes the route link immediately familiar and interchangeable with the ordinary HTML link;
 - route matching is easily applicable to both components and prop values;
 - plain HTML links are easily convertable to route links (e.g. in a chunk of static HTML content);
 - the server-side rendering (SSR) setup is identical to the client-side setup;
@@ -13,10 +13,6 @@
 ```jsx
 import {createRoot} from 'react-dom/client';
 import {useRoute, A} from 'postrouter';
-// `A` is a link component enabling navigation without page reloading.
-// (To comply with the History API, it won't require page reloads as
-// long as the `href` prop value is a same-origin location. With
-// non-same-origin URLs, `A` will act as a plain HTML link.)
 
 const AppRoute = {
     HOME: '/',
@@ -32,8 +28,8 @@ const App = () => {
     return (
         <div className="app">
             <nav>
-                {/* the route component `A` looks similar to the plain
-                    HTML link as it serves a similar purpose */
+                {/* the route link component `A` looks similar to the
+                    plain HTML link as it serves a similar purpose */}
                 <A href={AppRoute.HOME}
                     // `withRoute()` checks the current location and
                     // works similar to the conditional ternary operator;
@@ -101,7 +97,7 @@ const App = () => {
 createRoot(document.querySelector('#app')).render(<App/>);
 ```
 
-The `route` object returned from the `useRoute()` hook is an instance of the [`Location`](https://www.npmjs.com/package/histloc) class provided by the wrapping `<Router>` component. If there is no `<Router>` up the React node tree (like with `<App/>` in the example above), a default `route` based on the current page location is used. Therefore, a wrapping `<Router>` can be useful to provide a custom `route` prop value that accepts either a string location or a `Location` class instance.
+The `route` object returned from the `useRoute()` hook is an instance of the [`Location`](https://www.npmjs.com/package/histloc) class provided by the wrapping `<Router>` component. If there is no `<Router>` up the React node tree (like with `<App/>` in the example above), a default `route` based on the current page location is used. A wrapping `<Router>` can be useful to provide a custom `route` prop value that accepts either a string location or a `Location` class instance.
 
 ## Custom routing
 
@@ -109,8 +105,7 @@ The default `route` object returned from the `useRoute()` hook responds to chang
 
 ```jsx
 import {createRoot} from 'react-dom/client';
-import {Location, getPath} from 'histloc';
-import {Router} from 'postrouter';
+import {Router, Location, getPath} from 'postrouter';
 
 export class PathLocation extends Location {
     deriveHref(location) {

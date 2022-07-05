@@ -30,8 +30,8 @@ const App = () => {
     // to URL changes.
     const [route, withRoute] = useRoute();
     // `route` is a utility object providing a `window.location`-like
-    //    API for the interaction with the app's route and allowing
-    //    for subscription to URL path changes.
+    //    API for the interaction with the URL location and allowing
+    //    for subscription to URL location changes.
     // `withRoute(routePattern, x, y)` is a function acting somewhat
     //    similar to the ternary operator (`?:`); it returns `x` if
     //    `routePattern` matches the current route and `y` otherwise.
@@ -41,8 +41,14 @@ const App = () => {
 
     return (
         <div className="app">
-            <div className="navbar">
+            <nav>
+                {/* the route component `A` looks similar to the plain
+                    HTML link as it serves a similar purpose */
                 <A href={AppRoute.HOME}
+                    // the `withRoute()` function works the same way
+                    // for both props and components;
+                    // roughly: `home location ? 'active' : undefined`
+                    // (the omitted third argument is `undefined`)
                     className={withRoute(AppRoute.HOME, 'active')}>
                     Home
                 </A>
@@ -51,50 +57,52 @@ const App = () => {
                     className={withRoute(AppRoute.INTRO, 'active')}>
                     Intro
                 </A>
-            </div>
-            <div className="main">
-                {withRoute(AppRoute.HOME, (
-                    <div className="section" id="home">
-                        <h1>Home</h1>
-                        <ul>
-                            <li>
-                                <A href="/section/1">Section #1</A>
-                            </li>
-                            <li>
-                                <A href="/section/2">Section #2</A>
-                            </li>
-                        </ul>
-                    </div>
-                ))}
-                {withRoute(AppRoute.INTRO, (
-                    <div className="section" id="intro">
-                        <h1>Intro</h1>
-                    </div>
-                ))}
-                {withRoute(AppRoute.SECTION, ({params}) => (
-                    <div className="section">
-                        <h1>Section #{params.id}</h1>
-                    </div>
-                ))}
-                {/* below, rendering `null` if the current location
-                    matches `allKnownRoutes`, and the 404 error screen
-                    otherwise */}
-                {withRoute(allKnownRoutes, null, (
-                    <div className="error section">
-                        <h1>404 Not found</h1>
-                    </div>
-                ))}
-                <div className="footer">
-                    <hr/>
-                    <button onClick={() => {
-                        // `route` can be handy where `<A>` and
-                        // `withRoute` are not applicable
-                        route.assign(AppRoute.HOME);
-                    }}>
-                        Home
-                    </button>
-                </div>
-            </div>
+            </nav>
+            {withRoute(AppRoute.HOME, (
+                <main id="home">
+                    <h1>Home</h1>
+                    <ul>
+                        <li>
+                            <A href="/section/1">Section #1</A>
+                        </li>
+                        <li>
+                            <A href="/section/2">Section #2</A>
+                        </li>
+                    </ul>
+                </main>
+            ))}
+            {/* although `withRoute()` calls may appear in groups like
+                in this example, they work independently from each other
+                and may as well be used uncoupled in different places of
+                an application */}
+            {withRoute(AppRoute.INTRO, (
+                <main className="section" id="intro">
+                    <h1>Intro</h1>
+                </main>
+            ))}
+            {withRoute(AppRoute.SECTION, ({params}) => (
+                <main className="section">
+                    <h1>Section #{params.id}</h1>
+                </main>
+            ))}
+            {/* below, rendering `null` if the current location
+                matches `allKnownRoutes`, and the 404 error screen
+                otherwise */}
+            {withRoute(allKnownRoutes, null, (
+                <main className="error section">
+                    <h1>404 Not found</h1>
+                </main>
+            ))}
+            <footer>
+                <hr/>
+                <button onClick={() => {
+                    // `route` can be handy for direct manipulation
+                    // of the location
+                    route.assign(AppRoute.HOME);
+                }}>
+                    Home
+                </button>
+            </footer>
         </div>
     );
 };

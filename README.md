@@ -67,6 +67,10 @@ const App = () => {
                     <h1>Intro</h1>
                 </main>
             ))}
+            {/* the second and the third argument of `withRoute()` can
+                be functions of `{path, params}`, with `params`
+                containing the capturing groups of the location pattern
+                if it is a regular expression */}
             {withRoute(AppRoute.SECTION, ({params}) => (
                 <main className="section">
                     <h1>Section #{params.id}</h1>

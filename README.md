@@ -26,18 +26,8 @@ const AppRoute = {
 const allKnownRoutes = Object.values(AppRoute);
 
 const App = () => {
-    // The `useRoute` hook enables the component's updates in response
-    // to URL changes.
+    // the `useRoute()` hook subscribes the component to URL changes
     const [route, withRoute] = useRoute();
-    // `route` is a utility object providing a `window.location`-like
-    //    API for the interaction with the URL location and allowing
-    //    for subscription to URL location changes.
-    // `withRoute(routePattern, x, y)` is a function acting somewhat
-    //    similar to the ternary operator (`?:`); it returns `x` if
-    //    `routePattern` matches the current route and `y` otherwise.
-    //    `x` and `y` can also be functions of `({path, params})` with
-    //    `params` containing the values of the capturing groups (both
-    //    named and unnamed) if `routePattern` is a regular expression.
 
     return (
         <div className="app">
@@ -45,9 +35,10 @@ const App = () => {
                 {/* the route component `A` looks similar to the plain
                     HTML link as it serves a similar purpose */
                 <A href={AppRoute.HOME}
-                    // the `withRoute()` function works the same way
-                    // for both props and components;
-                    // roughly: `home location ? 'active' : undefined`
+                    // `withRoute()` checks the current location and
+                    // works similar to the conditional ternary operator;
+                    // below, it roughly means:
+                    // `home location ? 'active' : undefined`
                     // (the omitted third argument is `undefined`)
                     className={withRoute(AppRoute.HOME, 'active')}>
                     Home
@@ -96,8 +87,8 @@ const App = () => {
             <footer>
                 <hr/>
                 <button onClick={() => {
-                    // `route` can be handy for direct manipulation
-                    // of the location
+                    // `route` has a `window.location`-like API and can
+                    // be handy for direct manipulation of the location
                     route.assign(AppRoute.HOME);
                 }}>
                     Home

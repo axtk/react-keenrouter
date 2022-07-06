@@ -140,17 +140,9 @@ app.get('/', (req, res) => {
 
 ## Converting plain links
 
-In some cases, it can be necessary to convert plain HTML links to SPA route links (that is to make them navigable without page reloading), where the route link component (shown in the example above) is not applicable right away. For instance:
-
-- if the plain links are part of a server-fetched chunk of content, or
-- if the plain links are part of a fixed internationalization string, or
-- if the plain links have already been used in many parts of the application.
-
-In these cases, the `useRouteLinks()` hook can be helpful.
+The `useRouteLinks()` hook can be helpful when it's necessary to convert plain HTML links to SPA route links if the route link component is not applicable right away (for instance, in a server-fetched static chunk of HTML content):
 
 ```js
-// With this hook, the plain links matching the selector will become
-// navigable without page reloading.
-useRouteLinks(componentRef, '.content a');
-// `componentRef` is a value returned from the React's `useRef` hook.
+useRouteLinks(containerRef, '.content a');
+// `containerRef` is a value returned from the React's `useRef()` hook.
 ```

@@ -6,10 +6,10 @@ export type WithRoute = Location['evaluate'];
 
 export function useRoute(): [Location, WithRoute] {
     let route = useContext(RouteContext);
-    let [path, setPath] = useState(route.href);
+    let [, setHref] = useState(route.href);
 
     useEffect(
-        () => route.onChange(event => setPath(event.href)),
+        () => route.onChange(event => setHref(event.href)),
         [route]
     );
 

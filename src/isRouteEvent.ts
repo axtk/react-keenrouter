@@ -14,6 +14,6 @@ export function isRouteEvent(
         (!('button' in event) || event.button === 0) &&
         !event.ctrlKey && !event.shiftKey && !event.altKey && !event.metaKey &&
         (!target || target === '_self') &&
-        isSameOrigin(href)
+        (!href || isSameOrigin(href))
     );
 }

@@ -1,5 +1,4 @@
 import {useContext, useCallback, createElement, AnchorHTMLAttributes, MouseEvent} from 'react';
-import {isSameOrigin} from 'histloc';
 import {RouteContext} from './RouteContext';
 import {isRouteEvent} from './isRouteEvent';
 

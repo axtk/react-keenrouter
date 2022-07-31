@@ -25,7 +25,7 @@
   "author": "axtk",
   "license": "MIT",
   "dependencies": {
-    "histloc": "4.0.0"
+    "histloc": "5.0.0"
   },
   "peerDependencies": {
     "@types/react": ">16.8",

@@ -2,7 +2,7 @@
 
 # postrouter
 
-*Componentless React router*
+*React router with componentless route matching*
 
 ## Example
 

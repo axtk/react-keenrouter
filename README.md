@@ -2,7 +2,7 @@
 
 # postrouter
 
-*A lightweight React router*
+*Componentless React router*
 
 ## Example
 

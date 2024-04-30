@@ -42,7 +42,7 @@ const App = () => {
                     // works similar to the conditional ternary operator;
                     // below, it roughly means:
                     // `home location ? 'active' : undefined`
-                    // (the omitted third argument is `undefined`)
+                    // (the omitted third parameter is `undefined`)
                     className={withRoute(appRoutes.HOME, 'active')}>
                     Home
                 </A>
@@ -74,7 +74,7 @@ const App = () => {
                     <h1>Intro</h1>
                 </main>
             ))}
-            {/* the second and the third argument of `withRoute()` can
+            {/* the second and the third parameter of `withRoute()` can
                 be functions of `{href, params}`, with `params`
                 containing the capturing groups of the location pattern
                 if it is a regular expression */}

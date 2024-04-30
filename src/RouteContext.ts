@@ -1,4 +1,4 @@
 import {createContext} from 'react';
-import {Location} from 'histloc';
+import {NavigationLocation} from 'navloc';
 
-export const RouteContext = createContext(new Location());
+export const RouteContext = createContext(new NavigationLocation());

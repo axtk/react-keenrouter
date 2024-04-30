@@ -1,5 +1,5 @@
 import type {MouseEvent as ReactMouseEvent, TouchEvent as ReactTouchEvent} from 'react';
-import {isSameOrigin} from 'histloc';
+import {isSameOrigin} from 'navloc';
 
 export type LinkProps = {
     href?: string | null | undefined;

@@ -20,12 +20,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/axtk/postrouter.git"
+    "url": "git://github.com/axtk/react-keenrouter.git"
   },
   "author": "axtk",
   "license": "MIT",
   "dependencies": {
-    "histloc": "^5.0.0"
+    "navloc": "^6.0.2"
   },
   "peerDependencies": {
     "@types/react": ">16.8",

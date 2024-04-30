@@ -1,5 +1,5 @@
 {
-  "name": "postrouter",
+  "name": "react-keenrouter",
   "version": "3.1.5",
   "description": "React router with componentless route matching",
   "main": "dist/index.js",

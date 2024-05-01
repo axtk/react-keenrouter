@@ -10,7 +10,7 @@
   - doesn't enforce route collocation and tight coupling within a route hierarchy;
   - works the same way both for components and dynamic route-based prop values;
   - is akin to the common React pattern of [conditional rendering](https://react.dev/learn/conditional-rendering);
-- the history-based route link component `<A>` with the props similar to those of the ordinary HTML link `<a>` (allowing for quick migration back and forth and working more like a polyfill to the ordinary link);
+- the history-based route link components `<A>` and `<Area>` with the props similar to those of the ordinary HTML link elements `<a>` and `<area>` (allowing for quick migration back and forth and working more like a polyfill to ordinary links);
 - the `<Router>` component fit for both browser and server rendering;
 - the utility converting plain HTML links (that can't be easily replaced with React components) to history-based links.
 

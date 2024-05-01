@@ -1,14 +1,14 @@
 import {useContext, useCallback, MouseEvent} from 'react';
 import {isRouteEvent} from '../lib/isRouteEvent';
+import {getNavigationMode} from './getNavigationMode';
 import {RouteContext} from './RouteContext';
 import type {AProps} from './AProps';
 import type {AreaProps} from './AreaProps';
 
-export type UseLinkClickParams =
-    | Pick<AProps, 'href' | 'target' | 'onClick'>
-    | Pick<AreaProps, 'href' | 'target' | 'onClick'>;
+export type UseLinkClickParams = AProps | AreaProps;
 
-export function useLinkClick({href, target, onClick}: UseLinkClickParams) {
+export function useLinkClick(props: UseLinkClickParams) {
+    let {href, target, onClick} = props;
     let route = useContext(RouteContext);
 
     return useCallback((event: MouseEvent<HTMLAnchorElement & HTMLAreaElement>) => {
@@ -17,7 +17,10 @@ export function useLinkClick({href, target, onClick}: UseLinkClickParams) {
 
         if (!event.defaultPrevented && isRouteEvent(event, {href, target})) {
             event.preventDefault();
-            route.assign(href);
+
+            if (getNavigationMode(props) === 'replace')
+                route.replace(href);
+            else route.assign(href);
         }
     }, [route, href, target, onClick]);
 }

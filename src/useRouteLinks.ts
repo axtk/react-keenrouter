@@ -2,6 +2,7 @@ import {useContext, useEffect, RefObject} from 'react';
 import {subscribe} from '../lib/subscribe';
 import {isLinkElement} from '../lib/isLinkElement';
 import {isRouteEvent} from '../lib/isRouteEvent';
+import {getNavigationMode} from './getNavigationMode';
 import {RouteContext} from './RouteContext';
 
 /**
@@ -32,7 +33,10 @@ export function useRouteLinks(
                     isRouteEvent(event, element)
                 ) {
                     event.preventDefault();
-                    route.assign(element.href);
+
+                    if (getNavigationMode(element.dataset) === 'replace')
+                        route.replace(element.href);
+                    else route.assign(element.href);
                 }
             },
         });

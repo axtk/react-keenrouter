@@ -1,8 +1,8 @@
 import {useContext, useEffect, RefObject} from 'react';
+import {subscribe} from '../lib/subscribe';
+import {isLinkElement} from '../lib/isLinkElement';
+import {isRouteEvent} from '../lib/isRouteEvent';
 import {RouteContext} from './RouteContext';
-import {subscribe} from './subscribe';
-import {isLinkElement} from './isLinkElement';
-import {isRouteEvent} from './isRouteEvent';
 
 /**
  * Subscribes links to route changes to enable history navigation

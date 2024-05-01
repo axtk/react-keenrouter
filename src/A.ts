@@ -1,6 +1,6 @@
 import {useContext, useCallback, createElement, AnchorHTMLAttributes, MouseEvent} from 'react';
+import {isRouteEvent} from '../lib/isRouteEvent';
 import {RouteContext} from './RouteContext';
-import {isRouteEvent} from './isRouteEvent';
 
 export const A = ({href, target, onClick, ...rest}: AnchorHTMLAttributes<HTMLAnchorElement>) => {
     let route = useContext(RouteContext);

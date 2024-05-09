@@ -1,6 +1,6 @@
 import {createElement} from 'react';
-import {useLinkClick} from './useLinkClick';
 import type {AProps} from './AProps';
+import {useLinkClick} from './useLinkClick';
 
 export const A = (props: AProps) => {
     let handleClick = useLinkClick(props);

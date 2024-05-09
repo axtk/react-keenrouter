@@ -1,7 +1,7 @@
-import {useContext, useEffect, RefObject} from 'react';
-import {subscribe} from '../lib/subscribe';
+import {RefObject, useContext, useEffect} from 'react';
 import {isLinkElement} from '../lib/isLinkElement';
 import {isRouteEvent} from '../lib/isRouteEvent';
+import {subscribe} from '../lib/subscribe';
 import {getNavigationMode} from './getNavigationMode';
 import {RouteContext} from './RouteContext';
 
@@ -20,6 +20,7 @@ export function useRouteLinks(
 
     useEffect(() => {
         let scope = scopeRef?.current;
+
         if (!scope) return;
 
         return subscribe({

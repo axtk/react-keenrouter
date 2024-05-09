@@ -1,9 +1,9 @@
-import {useContext, useCallback, MouseEvent} from 'react';
+import {MouseEvent, useCallback, useContext} from 'react';
 import {isRouteEvent} from '../lib/isRouteEvent';
-import {getNavigationMode} from './getNavigationMode';
-import {RouteContext} from './RouteContext';
 import type {AProps} from './AProps';
 import type {AreaProps} from './AreaProps';
+import {getNavigationMode} from './getNavigationMode';
+import {RouteContext} from './RouteContext';
 
 export type UseLinkClickParams = AProps | AreaProps;
 

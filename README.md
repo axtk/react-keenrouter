@@ -18,7 +18,7 @@
 
 ```jsx
 import {createRoot} from 'react-dom/client';
-import {useRoute, A} from 'react-keenrouter';
+import {A, useRoute} from 'react-keenrouter';
 
 const appRoutes = {
     HOME: '/',
@@ -30,50 +30,58 @@ const allKnownRoutes = Object.values(appRoutes);
 
 const App = () => {
     // the `useRoute()` hook subscribes the component to URL changes
-    const [route, withRoute] = useRoute();
+    let [route, withRoute] = useRoute();
 
     return (
         <div className="app">
             <nav>
                 {/* the route link component `A` looks similar to the
                     plain HTML link as it serves a similar purpose */}
-                <A href={appRoutes.HOME}
+                <A
+                    href={appRoutes.HOME}
                     // `withRoute()` checks the current location and
                     // works similar to the conditional ternary operator;
                     // below, it roughly means:
                     // `home location ? 'active' : undefined`
                     // (the omitted third parameter is `undefined`)
-                    className={withRoute(appRoutes.HOME, 'active')}>
+                    className={withRoute(appRoutes.HOME, 'active')}
+                >
                     Home
                 </A>
                 {' | '}
-                <A href={appRoutes.INTRO}
-                    className={withRoute(appRoutes.INTRO, 'active')}>
+                <A
+                    href={appRoutes.INTRO}
+                    className={withRoute(appRoutes.INTRO, 'active')}
+                >
                     Intro
                 </A>
             </nav>
-            {withRoute(appRoutes.HOME, (
-                <main id="home">
-                    <h1>Home</h1>
-                    <ul>
-                        <li>
-                            <A href="/section/1">Section #1</A>
-                        </li>
-                        <li>
-                            <A href="/section/2">Section #2</A>
-                        </li>
-                    </ul>
-                </main>
-            ))}
+            {withRoute(
+                appRoutes.HOME, (
+                    <main id="home">
+                        <h1>Home</h1>
+                        <ul>
+                            <li>
+                                <A href="/section/1">Section #1</A>
+                            </li>
+                            <li>
+                                <A href="/section/2">Section #2</A>
+                            </li>
+                        </ul>
+                    </main>
+                ),
+            )}
             {/* although `withRoute()` calls may appear in groups like
                 in this example, they work independently from each other
                 and may as well be used uncoupled in different places of
                 an application */}
-            {withRoute(appRoutes.INTRO, (
-                <main className="section" id="intro">
-                    <h1>Intro</h1>
-                </main>
-            ))}
+            {withRoute(
+                appRoutes.INTRO, (
+                    <main className="section" id="intro">
+                        <h1>Intro</h1>
+                    </main>
+                ),
+            )}
             {/* the second and the third parameter of `withRoute()` can
                 be functions of `{href, params}`, with `params`
                 containing the capturing groups of the location pattern
@@ -86,18 +94,23 @@ const App = () => {
             {/* below, rendering `null` if the current location
                 matches `allKnownRoutes`, and the 404 error screen
                 otherwise */}
-            {withRoute(allKnownRoutes, null, (
-                <main className="error section">
-                    <h1>404 Not found</h1>
-                </main>
-            ))}
+            {withRoute(
+                allKnownRoutes,
+                null, (
+                    <main className="error section">
+                        <h1>404 Not found</h1>
+                    </main>
+                ),
+            )}
             <footer>
                 <hr/>
-                <button onClick={() => {
+                <button
+                    onClick={() => {
                     // `route` has a `window.location`-like API and can
                     // be handy for direct manipulation of the location
-                    route.assign(appRoutes.HOME);
-                }}>
+                        route.assign(appRoutes.HOME);
+                    }}
+                >
                     Home
                 </button>
             </footer>
@@ -116,7 +129,7 @@ The default `route` object returned from the `useRoute()` hook responds to chang
 
 ```jsx
 import {createRoot} from 'react-dom/client';
-import {Router, NavigationLocation, getPath} from 'react-keenrouter';
+import {getPath, NavigationLocation, Router} from 'react-keenrouter';
 
 export class PathLocation extends NavigationLocation {
     deriveHref(location) {
@@ -128,7 +141,7 @@ export class PathLocation extends NavigationLocation {
 createRoot(document.querySelector('#app')).render(
     <Router route={new PathLocation()}>
         <App/>
-    </Router>
+    </Router>,
 );
 ```
 
@@ -141,8 +154,8 @@ For the initial render on the server, the `<Router>` component can be used to pa
 ```jsx
 // On the Express server
 app.get('/', (req, res) => {
-    const html = ReactDOMServer.renderToString(
-        <Router route={req.originalUrl}><App/></Router>
+    let html = ReactDOMServer.renderToString(
+        <Router route={req.originalUrl}><App/></Router>,
     );
 
     // Sending the resulting HTML to the client.

@@ -1,4 +1,4 @@
-import {useContext, useState, useEffect, useCallback} from 'react';
+import {useCallback, useContext, useEffect, useState} from 'react';
 import {NavigationLocation} from 'navloc';
 import {RouteContext} from './RouteContext';
 
@@ -10,12 +10,12 @@ export function useRoute(): [NavigationLocation, WithRoute] {
 
     useEffect(
         () => route.onChange(event => setHref(event.href)),
-        [route]
+        [route],
     );
 
     let withRoute: WithRoute = useCallback(
         (locationPattern, x, y) => route.evaluate(locationPattern, x, y),
-        [route]
+        [route],
     );
 
     return [route, withRoute];

@@ -12,7 +12,7 @@ export const Router = ({route, children}: RouterProps) => {
 
     if (route instanceof NavigationLocation)
         value = route;
-    else if (route == null || typeof route === 'string')
+    else if (route === undefined || route === null || typeof route === 'string')
         value = new NavigationLocation(route);
     else
         throw new Error('Router route of unknown type');

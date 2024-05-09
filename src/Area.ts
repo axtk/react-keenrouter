@@ -1,6 +1,6 @@
 import {createElement} from 'react';
-import {useLinkClick} from './useLinkClick';
 import type {AreaProps} from './AreaProps';
+import {useLinkClick} from './useLinkClick';
 
 export const Area = (props: AreaProps) => {
     let handleClick = useLinkClick(props);

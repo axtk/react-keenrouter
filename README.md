@@ -17,7 +17,6 @@
 ## Example
 
 ```jsx
-import {createRoot} from 'react-dom/client';
 import {A, useRoute} from 'react-keenrouter';
 
 const appRoutes = {
@@ -28,7 +27,7 @@ const appRoutes = {
 
 const allKnownRoutes = Object.values(appRoutes);
 
-const App = () => {
+export const App = () => {
     // the `useRoute()` hook subscribes the component to URL changes
     let [route, withRoute] = useRoute();
 
@@ -117,6 +116,11 @@ const App = () => {
         </div>
     );
 };
+```
+
+```jsx
+import {createRoot} from 'react-dom/client';
+import {App} from './App';
 
 createRoot(document.querySelector('#app')).render(<App/>);
 ```
@@ -127,9 +131,8 @@ The `route` object returned from the `useRoute()` hook is an instance of the [`N
 
 The default `route` object returned from the `useRoute()` hook responds to changes in the entire URL, with `pathname`, `search`, and `hash` combined. This can be changed by providing an instance of a [customized](https://www.npmjs.com/package/navloc#custom-behavior) extension of the `NavigationLocation` class to the `Router` component.
 
-```jsx
-import {createRoot} from 'react-dom/client';
-import {getPath, NavigationLocation, Router} from 'react-keenrouter';
+```js
+import {NavigationLocation} from 'react-keenrouter';
 
 export class PathLocation extends NavigationLocation {
     deriveHref(location) {
@@ -137,6 +140,12 @@ export class PathLocation extends NavigationLocation {
         return getPath(location, {search: false, hash: false});
     }
 }
+```
+
+```jsx
+import {createRoot} from 'react-dom/client';
+import {Router} from 'react-keenrouter';
+import {PathLocation} from './PathLocation';
 
 createRoot(document.querySelector('#app')).render(
     <Router route={new PathLocation()}>

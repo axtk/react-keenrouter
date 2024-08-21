@@ -25,7 +25,7 @@
   "author": "axtk",
   "license": "MIT",
   "dependencies": {
-    "navloc": "^6.0.3"
+    "navloc": "^6.1.0"
   },
   "peerDependencies": {
     "@types/react": ">16.8",
